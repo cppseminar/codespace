@@ -1,2 +1,4 @@
 {
-    "extensions.ignoreRecommendations": true}
+    "extensions.ignoreRecommendations": true,
+    "C_Cpp.default.compileCommands": "${workspaceFolder}/build/compile_commands.json"
+}
