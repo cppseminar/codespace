@@ -5,7 +5,8 @@
       "detail": "Configure the project using CMake",
       "label": "project-configure",
       "type": "shell",
-      "command": "cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug",
+      // We need to use ninja as the build system in order to work with import std;
+      "command": "cmake -G \"Ninja\" -S . -B build -DCMAKE_BUILD_TYPE=Debug",
       "problemMatcher": []
     },
     {
