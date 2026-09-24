@@ -1,4 +1,8 @@
 {
     "extensions.ignoreRecommendations": true,
-    "C_Cpp.default.compileCommands": "${workspaceFolder}/build/compile_commands.json"
+    "cmake.useCMakePresets": "always",
+    "clangd.arguments": [
+        "--compile-commands-dir=build",
+        "--experimental-modules-support"
+    ]
 }

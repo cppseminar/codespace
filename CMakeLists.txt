@@ -14,6 +14,10 @@ cmake_minimum_required(VERSION 4.2)
 # 5. Look for the UUID listed under the C++ import std support section.
 set(CMAKE_EXPERIMENTAL_CXX_IMPORT_STD "d0edc3af-4c50-42ea-a356-e2862fe7a444")
 
+# CMake creates the standard-library module target during project(), so this
+# must be set first to keep its BMI flags consistent with application targets.
+set(CMAKE_CXX_EXTENSIONS OFF)
+
 project(APCProject LANGUAGES CXX)
 
 # create compile_commands.json for vscode
@@ -25,15 +29,13 @@ set(CMAKE_CXX_MODULE_STD 1)
 # Use C++23 standard
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_EXTENSIONS OFF)
 
-# Make GCC very pedantic and disable extensions
-if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+# Enable strict warnings supported by Clang.
+if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
     add_compile_options(
         -Wall
         -Wextra
         -Wpedantic
-        -Wlogical-op
         -Wmissing-include-dirs
         -Wredundant-decls
         -Wstrict-overflow
@@ -41,7 +43,7 @@ if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
         -Wnull-dereference
         -Walloca
         -Werror=vla
-)
+    )
 endif()
 
 # Add executable
