@@ -41,3 +41,30 @@
 3. Wait for code space to build and open
 4. You have basically working VS Code in the browser, so proceed as in the VS Code section above (just skip first step).
 5. It is possible to open the remote codespace in local VS Code as well, you just click on the left bottom corner with codespace name and select *Open in VS Code Desktop*. It will guide you through the steps (installing github extension and logging in to github). After that, the codespace is opened in local VS Code and you can work as if it was local devcontainer.
+
+## How to add new module to sources
+
+1. Create a new module file, for example `math.cppm`. With content similar to:
+   ```cpp
+   export module math;
+
+   export int add(int a, int b) {
+       return a + b;
+   }
+   ```
+2. Add the new module to the `CMakeLists.txt` file under `target_sources` with `FILE_SET CXX_MODULES`.
+   ```cmake
+   target_sources(${PROJECT_NAME}
+      PRIVATE
+         FILE_SET CXX_MODULES
+         FILES math.cppm
+   )
+   ```
+3. Use the new module in your code by importing it, for example in `main.cpp`:
+   ```cpp
+   import math;
+
+   int main() {
+       std::println("2 + 3 = {}", add(2, 3));
+   }
+   ```
