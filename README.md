@@ -28,7 +28,11 @@
 - If you do not wish to use the devcontainer, you can delete `.devcontainer` folder, tasks and launch configuration in `.vscode` folder should work locally on Linux environment. Maybe you would need to adjust the paths. It should work as well. Just use at least clang 21.
 - VS Code may want you to install some extensions, we recommend to ignore it, as we have everything setup in the devcontainer already. This should now be covered by `settings.json` in `.vscode` folder, so just in case.
 - Experimental `import std;` is supported in this project. It works with syntax highlighting and code completion in the devcontainer. However to be fully functional, you need to wait for `clangd` to index everything (couple of minutes) and you need to build the project at least once, so that all modules are properly recognized. 
-- If for whatever reason the modules are not recognized, (it will complain about `import std;`), try to restart `clangd` server with command `F1 → clangd: Restart language server`. If that does not work, remove `build` folder and build the project again.
+- If for whatever reason the modules are not recognized, (it will complain about `import std;`), try these steps
+  1. Save the file.
+  2. Rebuild the project.
+  3. Restart `clangd` server with command `F1 → clangd: Restart language server`. 
+  4. Remove `build` folder and build the project again if the previous steps did not work.
 - Importing header unit is still not functional since CMake does not fully support them yet. And we would need to add them manually to the CMake configuration.
 
 ## In github codespaces
