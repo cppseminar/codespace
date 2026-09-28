@@ -12,6 +12,7 @@
    - On Mac install Docker Desktop. You need Rosetta 2 installed as well, if you are on Apple Silicon.
    - If you do not have Docker installed and you do not want to install it, you can use github codespaces as well, see below. It can be connected to local VS Code as well.
 2. You need to have [VS Code](https://code.visualstudio.com/) installed.
+3. Inside VS Code, make sure you have Dev [Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) installed.
 
 ### Steps
 
